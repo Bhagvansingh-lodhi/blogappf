@@ -38,18 +38,25 @@ const PublicBlog = () => {
 
   return (
     <div className="min-h-screen bg-white font-lato">
-      {/* HERO SECTION - REDUCED PADDING */}
-    <section className="pt-20 pb-8 border-b border-gray-100">
+      {/* HERO SECTION – RESPONSIVE */}
+<section className="pt-20 pb-8 border-b border-gray-100">
   <div className="w-full">
-    <div className="px-[120px]">
+    <div className="px-6 md:px-[120px] flex justify-center md:justify-start">
       <img
         src={heroImg}
         alt="Hero"
-        className="w-full h-auto object-contain"
+        className="
+          w-full
+          max-w-[420px]
+          md:max-w-none
+          h-auto
+          object-contain
+        "
       />
     </div>
   </div>
 </section>
+
 
       {/* LOADING / ERROR STATES */}
       {loading && (
