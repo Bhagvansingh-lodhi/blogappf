@@ -6,7 +6,8 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import PublicBlog from "./pages/PublicBlog";   // agar ye banaya hai
-import SinglePost from "./pages/SinglePost";   // optional, agar add kiya hai
+import SinglePost from "./pages/SinglePost";  
+
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("adminToken"));
