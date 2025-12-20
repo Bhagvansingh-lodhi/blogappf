@@ -1,12 +1,19 @@
 // frontend/src/App.jsx
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import PublicBlog from "./pages/PublicBlog";   // agar ye banaya hai
-import SinglePost from "./pages/SinglePost";  
+import PublicBlog from "./pages/PublicBlog";
+import SinglePost from "./pages/SinglePost";
+import Resources from "./pages/Resources";
+import Portfolio from "./pages/Portfolio";
 
 
 function App() {
@@ -26,41 +33,45 @@ function App() {
 
   return (
     <Router>
-      {/* Navbar har page pe */}
+      {/* Navbar on all pages */}
       <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
 
-      <div className="min-h-screen bg-gray-100">
-        <Routes>
-          {/* Public blog page */}
-          <Route path="/" element={<PublicBlog />} />
+      {/* ROUTES */}
+      <Routes>
+        {/* Public pages */}
+        <Route path="/" element={<PublicBlog />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/post/:id" element={<SinglePost />} />
+        <Route path="/portfolio" element={<Portfolio />} />
 
-          {/* Single post page (optional) */}
-          <Route path="/post/:id" element={<SinglePost />} />
 
-          {/* Admin login */}
-          <Route
-            path="/login"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/admin" />
-              ) : (
-                <Login onLogin={handleLogin} />
-              )
-            }
-          />
+        {/* Auth */}
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/admin" />
+            ) : (
+              <Login onLogin={handleLogin} />
+            )
+          }
+        />
 
-          {/* Admin dashboard (protected) */}
-          <Route
-            path="/admin"
-            element={
-              isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" />
-            }
-          />
+        {/* Protected Admin */}
+        <Route
+          path="/admin"
+          element={
+            isLoggedIn ? (
+              <Dashboard onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
 
-          {/* Unknown route → redirect */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </div>
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </Router>
   );
 }
