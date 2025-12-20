@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import API from "../api";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import heroImg from "../assets/hero.png";
+
 
 const PublicBlog = () => {
   const [posts, setPosts] = useState([]);
@@ -37,17 +39,17 @@ const PublicBlog = () => {
   return (
     <div className="min-h-screen bg-white font-lato">
       {/* HERO SECTION - REDUCED PADDING */}
-      <section className="pt-20 pb-8 border-b border-gray-100">
-        <div className="w-full">
-          <div className="px-[120px]">
-            <img
-              src="/src/assets/hero.png"
-              alt="Hero"
-              className="w-full h-auto object-contain"
-            />
-          </div>
-        </div>
-      </section>
+    <section className="pt-20 pb-8 border-b border-gray-100">
+  <div className="w-full">
+    <div className="px-[120px]">
+      <img
+        src={heroImg}
+        alt="Hero"
+        className="w-full h-auto object-contain"
+      />
+    </div>
+  </div>
+</section>
 
       {/* LOADING / ERROR STATES */}
       {loading && (
