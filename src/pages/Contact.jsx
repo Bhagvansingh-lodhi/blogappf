@@ -14,21 +14,26 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 🔒 Backend later (for now just UI)
+    // backend later
     console.log(form);
   };
 
   return (
     <div className="min-h-screen bg-white font-lato">
 
-      {/* ================= PAGE CONTENT ================= */}
+      {/* ================= CONTACT CONTENT ================= */}
       <section className="pt-28 pb-32">
-        <div className="px-6 md:px-[120px] max-w-[900px]">
+        <div className="px-6 md:px-[120px] max-w-[880px]">
 
-          {/* INTRO TEXT */}
-          <p className="text-[18px] leading-[30px] text-[#8A90B2] mb-16">
-            I'm always open to interesting conversations—about design, about work,
-            about something you read here that you agreed or disagreed with.
+          {/* HEADING */}
+          <h1 className="font-raleway font-bold text-[24px] leading-[30px] text-[#071477] mb-4">
+            Let’s talk
+          </h1>
+
+          {/* SUBTEXT */}
+          <p className="text-[18px] leading-[30px] text-[#8A90B2] mb-16 max-w-[720px]">
+            I’m always open to conversations about design, work, or something you
+            read here that resonated with you.
           </p>
 
           {/* FORM */}
@@ -42,7 +47,7 @@ const Contact = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Your name"
+                placeholder="What should I call you?"
                 value={form.name}
                 onChange={handleChange}
                 className="
@@ -51,6 +56,7 @@ const Contact = () => {
                   border border-[#D9DEEF]
                   rounded-md
                   text-[16px]
+                  text-[#3D4367]
                   placeholder-[#A1A7C4]
                   focus:outline-none
                   focus:border-[#1028CD]
@@ -66,7 +72,7 @@ const Contact = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="you@example.com"
+                placeholder="Where can I reach you?"
                 value={form.email}
                 onChange={handleChange}
                 className="
@@ -75,6 +81,7 @@ const Contact = () => {
                   border border-[#D9DEEF]
                   rounded-md
                   text-[16px]
+                  text-[#3D4367]
                   placeholder-[#A1A7C4]
                   focus:outline-none
                   focus:border-[#1028CD]
@@ -89,7 +96,7 @@ const Contact = () => {
               </label>
               <textarea
                 name="message"
-                placeholder="What's on your mind?"
+                placeholder="What’s on your mind…"
                 rows={6}
                 value={form.message}
                 onChange={handleChange}
@@ -99,6 +106,7 @@ const Contact = () => {
                   border border-[#D9DEEF]
                   rounded-md
                   text-[16px]
+                  text-[#3D4367]
                   placeholder-[#A1A7C4]
                   resize-none
                   focus:outline-none
@@ -107,12 +115,10 @@ const Contact = () => {
               />
             </div>
 
-            {/* SUBMIT BUTTON */}
+            {/* BUTTON */}
             <button
               type="submit"
               className="
-                inline-flex
-                items-center
                 bg-[#071477]
                 text-white
                 text-[16px]
@@ -127,20 +133,29 @@ const Contact = () => {
             </button>
           </form>
 
-          {/* OTHER CONTACT OPTIONS */}
+          {/* OTHER LINKS */}
           <div className="mt-20">
             <p className="text-[15px] text-[#8A90B2] mb-4">
               Prefer another way to connect?
             </p>
 
-            <div className="flex items-center gap-8 text-[#3D4367] text-[15px]">
-              <a href="mailto:hello@example.com" className="hover:text-[#1028CD] transition">
+            <div className="flex items-center gap-8 text-[15px] text-[#3D4367]">
+              <a
+                href="mailto:hello@example.com"
+                className="hover:text-[#1028CD] transition"
+              >
                 Email
               </a>
-              <a href="#" className="hover:text-[#1028CD] transition">
+              <a
+                href="#"
+                className="hover:text-[#1028CD] transition"
+              >
                 LinkedIn
               </a>
-              <a href="#" className="hover:text-[#1028CD] transition">
+              <a
+                href="#"
+                className="hover:text-[#1028CD] transition"
+              >
                 Twitter
               </a>
             </div>

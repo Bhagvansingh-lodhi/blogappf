@@ -13,6 +13,15 @@ const DUMMY_VISUALS = [
   "https://placehold.co/600x500?text=Visual+5",
   "https://placehold.co/600x500?text=Visual+6",
 ];
+const PLAYGROUND_VIDEOS = [
+  "https://www.w3schools.com/html/mov_bbb.mp4",
+  "https://www.w3schools.com/html/movie.mp4",
+  "https://www.w3schools.com/html/mov_bbb.mp4",
+  "https://www.w3schools.com/html/movie.mp4",
+  "https://www.w3schools.com/html/mov_bbb.mp4",
+  "https://www.w3schools.com/html/movie.mp4",
+];
+
 
 /* ================= PROJECT CARD ================= */
 const ProjectCard = ({ image, title, description, tags }) => {
@@ -176,6 +185,44 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+      {/* ================= PLAYGROUND ================= */}
+<section className="pb-32">
+  <div className="px-6 md:px-[120px]">
+
+    {/* TITLE */}
+    <h2 className="font-raleway font-bold text-[20px] leading-[26px] text-[#071477] mb-10">
+      Playground
+    </h2>
+
+    {/* GRID */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {PLAYGROUND_VIDEOS.map((video, index) => (
+        <div
+          key={index}
+          className="
+            bg-black
+            rounded-2xl
+            p-3
+          "
+        >
+          {/* WHITE FRAME */}
+          <div className="rounded-xl overflow-hidden bg-white">
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[260px] object-cover"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
       {/* ================= FOOTER ================= */}
       <Footer />
