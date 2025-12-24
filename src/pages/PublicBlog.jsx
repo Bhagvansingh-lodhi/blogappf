@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import heroImg from "../assets/hero.png";
 
+import PublicBlogSkeleton from "../components/PublicBlogSkeleton";
 
 const PublicBlog = () => {
   const [posts, setPosts] = useState([]);
@@ -58,14 +59,7 @@ const PublicBlog = () => {
 </section>
 
 
-      {/* LOADING / ERROR STATES */}
-      {loading && (
-        <div className="py-20">
-          <p className="text-center text-gray-500 text-lg font-lato">
-            Loading articles…
-          </p>
-        </div>
-      )}
+     {loading && <PublicBlogSkeleton />}
 
       {error && (
         <div className="py-20">
