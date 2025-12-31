@@ -15,6 +15,7 @@ import SinglePost from "./pages/SinglePost";
 import Resources from "./pages/Resources";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import ProjectDetails from "./pages/ProjectDetails";
 
 
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/post/:id" element={<SinglePost />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/project/:slug" element={<ProjectDetails />} />
 
 
         {/* Auth */}
