@@ -76,11 +76,11 @@ const Portfolio = () => {
 
               <div className="space-y-5 text-[16px] leading-[26px] text-[#3D4367]">
                 <p>Hey, I’m Isha. I design thoughtful digital experiences with a strong focus on people.</p>
-                <p>I work as a UI/UX Designer and Engineer, focusing on making things that genuinely work for people.</p>
+                <p>I work as a UI/UX Designer and Engineer, focusing on making things that genuinely work for people using them. It’s easy for that intention to get lost among metrics, opinions, and constraints, so I try to keep the human perspective at the center..</p>
                 <p>I enjoy exploring new ideas at the intersection of design, technology, and AI.</p>
-                <p>Outside of work, I like photography, guitar and vibe coding.</p>
+                <p>Outside of work, I like photography, I’m learning to play the guitar, and I spend time experimenting with vibe coding and conversational design..</p>
                 <p>I want to create an impact with heart, purpose, and belonging.</p>
-                <p>I’m always open to collaborations — feel free to reach out :)</p>
+                <p>I’m always open to conversations, collaborations, and new projects. Feel free to reach out :)</p>
               </div>
             </div>
           </div>
