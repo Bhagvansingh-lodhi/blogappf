@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import v1 from "../assets/visuals/v1.png";
+import v2 from "../assets/visuals/v2.png";
+import v3 from "../assets/visuals/v3.png";
+import v4 from "../assets/visuals/v4.png";
+import v5 from "../assets/visuals/v5.png";
+import v6 from "../assets/visuals/v6.png";
+import v7 from "../assets/visuals/v7.png";
+import profilePng from "../assets/profile.png"
 
 /* ✅ Dummy images */
 const DUMMY_PROJECT =
   "https://placehold.co/600x400?text=Project+Image";
 
-const DUMMY_VISUALS = [
-  "https://placehold.co/600x500?text=Visual+1",
-  "https://placehold.co/600x500?text=Visual+2",
-  "https://placehold.co/600x500?text=Visual+3",
-  "https://placehold.co/600x500?text=Visual+4",
-  "https://placehold.co/600x500?text=Visual+5",
-  "https://placehold.co/600x500?text=Visual+6",
-];
+const DUMMY_VISUALS = [v1, v2, v3, v4, v5, v6, v7];
+
 const PLAYGROUND_VIDEOS = [
   "https://www.w3schools.com/html/mov_bbb.mp4",
   "https://www.w3schools.com/html/movie.mp4",
@@ -65,9 +67,13 @@ const Portfolio = () => {
       <section className="pt-28 pb-24">
         <div className="px-6 md:px-[120px]">
           <div className="flex flex-col md:flex-row gap-[48px] items-start">
-            <div className="w-full md:w-[360px] flex-shrink-0">
-              <img src="https://placehold.co/400x520?text=Profile+Image" alt="About" className="rounded-2xl w-full object-cover" />
-            </div>
+           <div className="w-full md:w-[360px] flex-shrink-0">
+  <img
+    src={profilePng}
+    alt="About"
+    className="rounded-2xl w-full object-cover"
+  />
+</div>
 
             <div className="max-w-[640px]">
               <h1 className="font-raleway font-bold text-[24px] leading-[30px] text-[#071477] mb-6">
@@ -113,20 +119,27 @@ const Portfolio = () => {
             Visual explorations
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {DUMMY_VISUALS.map((img, index) => (
-              <div
-                key={index}
-                className="border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white"
-              >
-                <img
-                  src={img}
-                  alt={`Visual ${index + 1}`}
-                  className="w-full h-[320px] object-cover"
-                />
-              </div>
-            ))}
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-10">
+
+  {DUMMY_VISUALS.map((img, index) => {
+    const big = index === 0 || index === 1 || index === 5 || index === 6;
+
+    return (
+      <div
+        key={index}
+        className={`border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white
+        ${big ? "md:col-span-3 md:row-span-2" : "md:col-span-2"}`}
+      >
+        <img
+          src={img}
+          alt={`Visual ${index + 1}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
+  })}
+</div>
+
         </div>
       </section>
       {/* ================= PLAYGROUND ================= */}
