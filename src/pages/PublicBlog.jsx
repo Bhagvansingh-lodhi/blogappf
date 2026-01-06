@@ -5,15 +5,19 @@ import Footer from "../components/Footer";
 import heroImg from "../assets/hero.png";
 import PublicBlogSkeleton from "../components/PublicBlogSkeleton";
 
+
+
 const PublicBlog = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await API.get("/posts");
+        const { data } = await API.get(`/posts?page=${page}`);
+
         const sortedPosts = [...data].sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
@@ -25,7 +29,7 @@ const PublicBlog = () => {
       }
     };
     fetchPosts();
-  }, []);
+  }, [page]);
 
   const featuredPost = posts[0];
   const remainingPosts = posts.slice(1);
@@ -139,6 +143,23 @@ const PublicBlog = () => {
   </div>
 </section>
 )}
+<div className="flex justify-center gap-8 mt-16 pt-8 border-t border-gray-100 font-lato">
+  <button
+    disabled={page === 1}
+    onClick={() => setPage(p => Math.max(1, p - 1))}
+    className="text-[#071477] font-medium hover:text-[#1028CD] transition-colors duration-200 disabled:opacity-40"
+  >
+    ← Newer
+  </button>
+
+  <button
+    onClick={() => setPage(p => p + 1)}
+    className="text-[#071477] font-medium hover:text-[#1028CD] transition-colors duration-200"
+  >
+    Older →
+  </button>
+</div>
+
 
 <Footer />
 </div>
