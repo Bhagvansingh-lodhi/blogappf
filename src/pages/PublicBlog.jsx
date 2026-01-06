@@ -159,9 +159,11 @@ const PublicBlog = () => {
                       {post.title}
                     </h3>
 
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-3 leading-relaxed font-lato font-normal">
-                      {post.description}
-                    </p>
+                    <p className="text-gray-600 text-base mb-6 leading-relaxed font-lato font-normal">
+  {(featuredPost.lead || featuredPost.description)
+    .replace(/\s+/g, " ")
+    .slice(0, 550)}…
+</p>
 
                     <div className="flex flex-wrap gap-4 text-xs text-gray-500 font-lato">
                       <span className="bg-blue-50 text-[#071477] px-2 py-1 rounded">
