@@ -54,7 +54,8 @@ const SinglePost = () => {
           <div className="flex items-center gap-3 text-[13px] text-[#8A90B2] mb-4">
             <span className="uppercase tracking-wide">{post.category || "UI/UX"}</span>
             <span>•</span>
-            <span>{calculateReadingTime(post.description)} min</span>
+            <span>{calculateReadingTime(post.lead)} min</span>
+
             <span>•</span>
             <span>{new Date(post.createdAt).toLocaleDateString()}</span>
           </div>
@@ -73,12 +74,25 @@ const SinglePost = () => {
             />
           )}
 
-          <article className="space-y-6 text-[16px] leading-[28px] text-[#3D4367]">
-            {post.description
-              .split("\n")
-              .filter(Boolean)
-              .map((p, i) => <p key={i}>{p}</p>)}
-          </article>
+          <article className="mt-16 space-y-16">
+  <p className="text-[17px] leading-[30px] text-[#8A90B2] max-w-[640px]">
+    {post.lead}
+  </p>
+
+  {post.sections.map((sec, i) => (
+    <div key={i} className="space-y-6">
+      <h2 className="text-[20px] font-semibold text-[#071477]">
+        {sec.heading}
+      </h2>
+
+      {sec.paragraphs.map((p, j) => (
+        <p key={j} className="leading-[30px] text-[#3D4367]">
+          {p}
+        </p>
+      ))}
+    </div>
+  ))}
+</article>
 
         </div>
       </section>

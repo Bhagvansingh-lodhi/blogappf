@@ -1,69 +1,79 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "/src/assets/logo.png";
 
-const Navbar = ({ isLoggedIn, onLogout }) => {
-  const navigate = useNavigate();
+const prefetchMap = {
+  "/": () => import("../pages/PublicBlog.jsx"),
+  "/resources": () => import("../pages/Resources.jsx"),
+  "/portfolio": () => import("../pages/Portfolio.jsx"),
+  "/contact": () => import("../pages/Contact.jsx"),
+};
+
+const Navbar = () => {
+  const location = useLocation();
+  const lastScroll = useRef(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      const current = window.scrollY;
+      setIsScrolled(current > 10);
+      setHidden(current > lastScroll.current && current > 80);
+      lastScroll.current = current;
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
+    { name: "Blogs", path: "/" },
     { name: "Resources", path: "/resources" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Contact", path: "/contact" },
-    { name: "Support", path: "/support" },
   ];
+
+  const prefetch = (path) => prefetchMap[path]?.();
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
         isScrolled ? "shadow-sm" : ""
-      }`}
+      } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
-      {/* DESKTOP + MOBILE BAR */}
-      <div className="w-full h-16 flex items-center font-lato">
+      <div className="w-full h-16 flex items-center font-lato max-w-[1440px] mx-auto">
 
-        {/* LOGO */}
-        <Link to="/" className="ml-6 md:ml-[120px] flex items-center">
-          <img
-            src={logo}
-            alt="Logo"
-            className="h-8 w-auto object-contain"
-          />
-        </Link>
+        <div className="ml-6 md:ml-[120px] flex items-center h-full">
+          <img src={logo} alt="Logo" className="h-8 w-auto object-contain" />
+        </div>
 
-        {/* DESKTOP NAV */}
-        <div className="hidden md:flex ml-auto mr-[120px] items-center">
+        <div className="hidden md:flex ml-auto mr-[120px] items-center h-full">
           <div className="flex items-center gap-8 text-[18px] leading-[27.4px] text-[#071477]">
-            {navLinks.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="
-                  relative
-                  transition-colors duration-200
-                  hover:text-[#1028CD]
-                  after:absolute after:left-0 after:-bottom-1
-                  after:h-[2px] after:w-0
-                  after:bg-[#1028CD]
-                  after:transition-all after:duration-300
-                  hover:after:w-full
-                "
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navLinks.map((item) => {
+              const active = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onMouseEnter={() => prefetch(item.path)}
+                  className={`
+                    relative transition-colors duration-200
+                    hover:text-[#1028CD]
+                    after:absolute after:left-0 after:-bottom-1
+                    after:h-[2px] after:bg-[#1028CD]
+                    after:transition-all after:duration-300
+                    ${active ? "after:w-full text-[#1028CD]" : "after:w-0 hover:after:w-full"}
+                  `}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
         <button
           onClick={() => setOpen(!open)}
           className="ml-auto mr-6 md:hidden text-[#071477]"
@@ -72,10 +82,9 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
         </button>
       </div>
 
-      {/* MOBILE DROPDOWN */}
       <div
         className={`md:hidden bg-white border-t border-gray-200 transition-all duration-300 ${
-          open ? "max-h-64 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          open ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
         <div className="px-6 py-4 flex flex-col gap-4 text-[18px] text-[#071477]">
