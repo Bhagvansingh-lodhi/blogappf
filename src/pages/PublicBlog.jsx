@@ -5,38 +5,35 @@ import Footer from "../components/Footer";
 import heroImg from "../assets/hero.png";
 import PublicBlogSkeleton from "../components/PublicBlogSkeleton";
 
-
-
 const PublicBlog = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data } = await API.get(`/posts?page=${page}`);
-
-        const sortedPosts = [...data].sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-        setPosts(sortedPosts);
-      } catch {
-        setError("Failed to load articles.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
+    setLoading(true);
+    API.get(`/posts?page=${page}`)
+      .then(res => setPosts(Array.isArray(res.data.posts) ? res.data.posts : []))
+      .catch(() => setError("Failed to load articles."))
+      .finally(() => setLoading(false));
   }, [page]);
 
-  const featuredPost = posts[0];
-  const remainingPosts = posts.slice(1);
+  useEffect(() => {
+    if (typeof posts[0]?.imageUrl === "string") {
+      const img = new Image();
+      img.src = posts[0].imageUrl;
+    }
+  }, [posts]);
 
-  const featuredImg = featuredPost?.imageUrl
-    ? featuredPost.imageUrl.replace("/upload/", "/upload/f_auto,q_auto,w_900/")
-    : "/fallback.jpg";
+  const safePosts = Array.isArray(posts) ? posts.filter(Boolean) : [];
+  const featuredPost = safePosts[0];
+  const remainingPosts = safePosts.slice(1);
+
+  const featuredImg =
+    typeof featuredPost?.imageUrl === "string"
+      ? featuredPost.imageUrl.replace("/upload/", "/upload/f_auto,q_auto,w_700/")
+      : "/fallback.jpg";
 
   return (
     <div className="min-h-screen bg-white font-lato">
@@ -45,7 +42,15 @@ const [page, setPage] = useState(1);
 <section className="pt-20 pb-8 border-b border-gray-100">
   <div className="w-full">
     <div className="px-6 md:px-[120px] flex justify-center md:justify-start">
-      <img src={heroImg} alt="Hero" className="w-full max-w-[420px] md:max-w-none h-auto object-contain" />
+      <img
+        src={heroImg}
+        loading="lazy"
+        decoding="async"
+        width="420"
+        height="240"
+        alt="Hero"
+        className="w-full max-w-[420px] md:max-w-none h-auto object-contain"
+      />
     </div>
   </div>
 </section>
@@ -67,7 +72,11 @@ const [page, setPage] = useState(1);
       <div className="relative overflow-hidden">
         <img
           src={featuredImg}
-          loading="lazy"
+          width="1040"
+          height="360"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
           alt={featuredPost.title}
           className="w-full h-[320px] md:h-[360px] object-cover transition-transform duration-500 group-hover:scale-105"
         />
@@ -83,7 +92,7 @@ const [page, setPage] = useState(1);
       <div className="p-8 bg-white">
         <h2 className="text-2xl md:text-3xl font-semibold text-[#071477] mb-4 leading-tight font-lato">{featuredPost.title}</h2>
         <p className="text-gray-600 text-base mb-6 leading-relaxed font-lato font-normal">
-          {(featuredPost.lead || featuredPost.description).replace(/\s+/g, " ").slice(0, 550)}…
+          {featuredPost.lead || featuredPost.description}
         </p>
 
         <div className="flex flex-wrap gap-6 text-sm text-gray-500 font-lato">
@@ -103,9 +112,10 @@ const [page, setPage] = useState(1);
   <div className="max-w-[1040px] mx-auto px-6 lg:px-0 py-16">
     <div className="grid md:grid-cols-2 gap-8">
       {remainingPosts.map((post) => {
-        const cardImg = post.imageUrl
-          ? post.imageUrl.replace("/upload/", "/upload/f_auto,q_auto,w_400/")
-          : "/fallback.jpg";
+        const cardImg =
+          typeof post?.imageUrl === "string"
+            ? post.imageUrl.replace("/upload/", "/upload/f_auto,q_auto,w_360/")
+            : "/fallback.jpg";
 
         return (
           <Link key={post._id} to={`/post/${post._id}`} className="group border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg">
@@ -114,6 +124,9 @@ const [page, setPage] = useState(1);
               <img
                 src={cardImg}
                 loading="lazy"
+                decoding="async"
+                width="360"
+                height="220"
                 alt={post.title}
                 className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -143,6 +156,7 @@ const [page, setPage] = useState(1);
   </div>
 </section>
 )}
+
 <div className="flex justify-center gap-8 mt-16 pt-8 border-t border-gray-100 font-lato">
   <button
     disabled={page === 1}
@@ -159,7 +173,6 @@ const [page, setPage] = useState(1);
     Older →
   </button>
 </div>
-
 
 <Footer />
 </div>
