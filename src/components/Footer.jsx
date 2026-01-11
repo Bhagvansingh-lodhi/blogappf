@@ -18,12 +18,16 @@ const Footer = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          footerRef.current.classList.remove("opacity-0", "translate-y-6");
+          footerRef.current.classList.remove("opacity-0", "translate-y-8");
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
-    observer.observe(footerRef.current);
+    if (footerRef.current) observer.observe(footerRef.current);
+
+    return () => {
+      if (footerRef.current) observer.unobserve(footerRef.current);
+    };
   }, []);
 
   const prefetch = (path) => prefetchMap[path]?.();
@@ -31,28 +35,31 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="bg-white font-lato opacity-0 translate-y-6 transition-all duration-700"
+      className="bg-white font-lato opacity-0 translate-y-8 transition-all duration-800 ease-out"
     >
-      <div className="max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[80px] py-[40px] lg:py-[48px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-20 py-12 lg:py-16">
         
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-0">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-0">
           
-          <div className="lg:max-w-[340px]">
-            <h3 className="text-[18px] lg:text-[20px] font-semibold text-[#3D4367] mb-3">
+          {/* Brand / Tagline */}
+          <div className="lg:max-w-[380px]">
+            <h3 className="text-xl lg:text-2xl font-semibold text-[#071477] mb-4">
               Isha Sahu
             </h3>
-            <p className="text-[14px] lg:text-[15px] leading-[22px] lg:leading-[24px] text-[#3D4367]/80">
+            <p className="text-[16px] lg:text-[17px] leading-relaxed text-[#3D4367]/85">
               Design work, writing, and learning in public.
             </p>
           </div>
 
-          <div className="flex gap-[60px] lg:gap-[120px]">
+          {/* Navigation Columns */}
+          <div className="flex flex-wrap gap-16 lg:gap-24">
             
+            {/* Navigate */}
             <div>
-              <h4 className="text-[13px] lg:text-[14px] uppercase tracking-wider text-[#3D4367]/70 mb-4 lg:mb-5">
+              <h4 className="text-sm lg:text-base uppercase tracking-wider font-medium text-[#3D4367]/70 mb-5 lg:mb-6">
                 Navigate
               </h4>
-              <ul className="space-y-2 lg:space-y-3 text-[14px] lg:text-[15px] text-[#3D4367]">
+              <ul className="space-y-3 lg:space-y-4 text-[15px] lg:text-[16px] text-[#3D4367]">
                 {[
                   { name: "Blogs", path: "/" },
                   { name: "Resources", path: "/resources" },
@@ -64,8 +71,8 @@ const Footer = () => {
                       <Link
                         to={item.path}
                         onMouseEnter={() => prefetch(item.path)}
-                        className={`hover:text-[#1028CD] ${
-                          active ? "text-[#1028CD]" : ""
+                        className={`transition-colors duration-200 hover:text-[#1028CD] ${
+                          active ? "text-[#1028CD] font-medium" : ""
                         }`}
                       >
                         {item.name}
@@ -76,17 +83,18 @@ const Footer = () => {
               </ul>
             </div>
 
+            {/* Connect */}
             <div>
-              <h4 className="text-[13px] lg:text-[14px] uppercase tracking-wider text-[#3D4367]/70 mb-4 lg:mb-5">
+              <h4 className="text-sm lg:text-base uppercase tracking-wider font-medium text-[#3D4367]/70 mb-5 lg:mb-6">
                 Connect
               </h4>
-              <ul className="space-y-2 lg:space-y-3 text-[14px] lg:text-[15px] text-[#3D4367]">
+              <ul className="space-y-3 lg:space-y-4 text-[15px] lg:text-[16px] text-[#3D4367]">
                 <li>
                   <Link
                     to="/contact"
                     onMouseEnter={() => prefetch("/contact")}
-                    className={`hover:text-[#1028CD] ${
-                      location.pathname === "/contact" ? "text-[#1028CD]" : ""
+                    className={`transition-colors duration-200 hover:text-[#1028CD] ${
+                      location.pathname === "/contact" ? "text-[#1028CD] font-medium" : ""
                     }`}
                   >
                     Contact
@@ -97,7 +105,7 @@ const Footer = () => {
                     href="https://www.linkedin.com/in/ishauptodesign?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BOXcR4qqjT2WNHGMWdmgcnA%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#1028CD]"
+                    className="transition-colors duration-200 hover:text-[#1028CD]"
                   >
                     LinkedIn
                   </a>
@@ -107,7 +115,7 @@ const Footer = () => {
                     href="https://www.instagram.com/ishacurates/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#1028CD]"
+                    className="transition-colors duration-200 hover:text-[#1028CD]"
                   >
                     Instagram
                   </a>
@@ -118,10 +126,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 lg:mt-[64px] border-t border-[#E6E8F0]" />
-
-        <div className="mt-6 text-[13px] lg:text-[14px] text-[#3D4367]/70">
-          © {year} Isha Sahu. All rights reserved.
+        {/* Divider + Copyright */}
+        <div className="mt-12 lg:mt-16 pt-8 border-t border-[#E6E8F0]">
+          <p className="text-[14px] lg:text-[15px] text-[#3D4367]/65 text-center lg:text-left">
+            © {year} Isha Sahu. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

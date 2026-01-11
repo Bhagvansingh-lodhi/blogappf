@@ -40,3 +40,54 @@
 .read-the-docs {
   color: #888;
 }
+/* ===== CASE STUDY MASTER SYSTEM ===== */
+
+.case-container{
+  max-width:1180px;
+  margin:0 auto;
+  padding-left:24px;
+  padding-right:24px;
+}
+
+.case-section{
+  padding-top:160px;
+  padding-bottom:160px;
+}
+
+.case-title{
+  font-family:'Raleway';
+  font-weight:700;
+  font-size:52px;
+  line-height:1.1;
+  color:#071477;
+}
+
+.case-subtitle{
+  max-width:780px;
+  margin:0 auto;
+  font-size:20px;
+  line-height:1.7;
+  color:#3D4367;
+}
+
+.case-h2{
+  font-size:36px;
+  font-weight:700;
+  color:#071477;
+}
+
+.case-text{
+  font-size:19px;
+  line-height:1.8;
+  color:#3D4367;
+}
+
+.case-img{
+  border-radius:32px;
+  box-shadow:0 40px 120px rgba(0,0,0,.15);
+}
+
+.dark-img{
+  border-radius:32px;
+  box-shadow:0 60px 140px rgba(0,0,0,.45);
+}

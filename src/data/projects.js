@@ -108,7 +108,7 @@ image: impFigmaToWp
   },
 
   {
-    slug: "dosaclub",
+    slug: "dosa-club",
     title: "Dosaclub",
     cardImage: p3,
     hero: p3,
@@ -117,7 +117,7 @@ image: impFigmaToWp
     duration: "10 Days",
     team: "Founding Team",
     description: "Improved Admin Workflows with a Structured Dashboard System",
-    caseStudy: { heroTitle: "Dosaclub Dashboard", heroSubtitle: "", heroImages: [] }
+    
   },
 
   {

@@ -1,5 +1,6 @@
 // frontend/src/App.jsx
 import React, { useState } from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,6 +17,14 @@ import Resources from "./pages/Resources";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import ProjectDetails from "./pages/ProjectDetails";
+import DosaClub from "./pages/Dosaclub";
+import ProjectRouter from "./pages/ProjectRouter";
+import Airing from "./pages/Airing";
+import Gadgetgrab from "./pages/Gadgetgrab";
+import ScrollToTop from "./components/ScrollToTop";
+
+
+
 
 
 
@@ -37,47 +46,42 @@ function App() {
 
   return (
     <Router>
+          <ScrollToTop />   {/* 👈 THIS IS THE FIX */}
+
       {/* Navbar on all pages */}
       <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+<Routes>
+  {/* Public pages */}
+  <Route path="/" element={<PublicBlog />} />
+  <Route path="/resources" element={<Resources />} />
+  <Route path="/post/:id" element={<SinglePost />} />
+  <Route path="/portfolio" element={<Portfolio />} />
+  <Route path="/contact" element={<Contact />} />
 
-      {/* ROUTES */}
-      <Routes>
-        {/* Public pages */}
-        <Route path="/" element={<PublicBlog />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/post/:id" element={<SinglePost />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/project/:slug" element={<ProjectDetails />} />
+  {/* FEATURED PROJECT */}
+  <Route path="/project/dosa-club" element={<DosaClub />} />
+  <Route path="/project/airing" element={<Airing />} />
+  <Route path="/project/gadgetgrab" element={<Gadgetgrab />} />
 
+  {/* NORMAL PROJECTS */}
+  <Route path="/project/:slug" element={<ProjectDetails />} />
 
-        {/* Auth */}
-        <Route
-          path="/login"
-          element={
-            isLoggedIn ? (
-              <Navigate to="/admin" />
-            ) : (
-              <Login onLogin={handleLogin} />
-            )
-          }
-        />
+  {/* Auth */}
+  <Route
+    path="/login"
+    element={isLoggedIn ? <Navigate to="/admin" /> : <Login onLogin={handleLogin} />}
+  />
 
-        {/* Protected Admin */}
-        <Route
-          path="/admin"
-          element={
-            isLoggedIn ? (
-              <Dashboard onLogout={handleLogout} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+  {/* Protected Admin */}
+  <Route
+    path="/admin"
+    element={isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" />}
+  />
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+  {/* Fallback */}
+  <Route path="*" element={<Navigate to="/" />} />
+</Routes>
+
     </Router>
   );
 }

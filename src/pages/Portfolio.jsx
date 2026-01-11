@@ -10,43 +10,47 @@ import v6 from "../assets/visuals/v6.png";
 import v7 from "../assets/visuals/v7.png";
 import profilePng from "../assets/profile.png";
 import { PROJECTS } from "../data/projects";
+import pg1 from "../assets/playground/pg1.gif";
+import pg2 from "../assets/playground/pg2.gif";
+import pg3 from "../assets/playground/pg3.gif";
+import pg4 from "../assets/playground/pg4.gif";
+import pg5 from "../assets/playground/pg5.gif";
+import pg7 from "../assets/playground/pg7.gif";
+import pg8 from "../assets/playground/pg8.gif";
+import pg9 from "../assets/playground/pg9.gif";
+import pg10 from "../assets/playground/pg10.gif";
+
+import pg6 from "../assets/playground/pg6.gif";
+
 
 /* ================= STATIC DATA ================= */
 const DUMMY_VISUALS = [v1, v2, v3, v4, v5, v6, v7];
 
-const PLAYGROUND_VIDEOS = [
-  "https://www.w3schools.com/html/mov_bbb.mp4",
-  "https://www.w3schools.com/html/movie.mp4",
-  "https://www.w3schools.com/html/mov_bbb.mp4",
-  "https://www.w3schools.com/html/movie.mp4",
-  "https://www.w3schools.com/html/mov_bbb.mp4",
-  "https://www.w3schools.com/html/movie.mp4",
-];
+const PLAYGROUND_GIFS = [pg1, pg2, pg3, pg4, pg5, pg6,pg7,pg8,pg9,pg10];
 
 /* ================= PROJECT CARD ================= */
 const ProjectCard = ({ slug, image, title, description, tags }) => {
   return (
     <Link to={`/project/${slug}`}>
-      <div className="border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white hover:shadow-xl transition">
-        <div className="w-full h-[260px] overflow-hidden">
-         <img
-  src={image}
-  alt={title}
-  className="w-full h-full object-contain bg-[#F8FAFF]"
-/>
-
+      <div className="border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white hover:shadow-xl transition duration-300">
+        <div className="w-full h-[280px] md:h-[300px] overflow-hidden bg-[#F8FAFF]">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
+          />
         </div>
 
-        <div className="px-6 pt-5 pb-6">
-          <h3 className="text-[18px] leading-[24px] font-semibold text-[#7A82A6] mb-3">
+        <div className="px-6 pt-6 pb-8">
+          <h3 className="text-xl md:text-[22px] font-semibold text-[#071477] mb-3 leading-tight">
             {title}
           </h3>
 
-          <p className="text-[16px] leading-[26px] text-[#1F2937] mb-4">
+          <p className="text-[17px] md:text-[18px] leading-[1.6] text-[#3D4367] mb-5">
             {description}
           </p>
 
-          <div className="flex items-center gap-3 text-[14px] text-[#7A82A6]">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-[#7A82A6]">
             {tags.map((tag, index) => (
               <React.Fragment key={index}>
                 <span>{tag}</span>
@@ -67,25 +71,28 @@ const Portfolio = () => {
     <div className="min-h-screen bg-white font-lato">
 
       {/* ================= ABOUT ME ================= */}
-      <section className="pt-28 pb-24">
+      <section className="pt-32 pb-32 md:pb-40">
         <div className="px-6 md:px-[120px]">
-          <div className="flex flex-col md:flex-row gap-[48px] items-start">
-            <div className="w-full md:w-[360px] flex-shrink-0">
-              <img src={profilePng} alt="About" className="rounded-2xl w-full object-cover" />
+          <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
+            <div className="w-full md:w-[380px] flex-shrink-0">
+              <img
+                src={profilePng}
+                alt="Isha - UI/UX Designer"
+                className="rounded-2xl w-full object-cover shadow-md"
+              />
             </div>
 
-            <div className="max-w-[640px]">
-              <h1 className="font-raleway font-bold text-[24px] leading-[30px] text-[#071477] mb-6">
-                About me
-              </h1>
-
-              <div className="space-y-5 text-[16px] leading-[26px] text-[#3D4367]">
+            <div className="max-w-[720px]">
+             <h1 className="font-raleway font-bold text-3xl md:text-[40px] lg:text-[42px] leading-tight text-[#071477] mb-8">
+  About me
+</h1>
+              <div className="space-y-6 text-[18px] md:text-[19px] leading-[1.75] text-[#3D4367]">
                 <p>Hey, I’m Isha. I design thoughtful digital experiences with a strong focus on people.</p>
                 <p>I work as a UI/UX Designer and Engineer, focusing on making things that genuinely work for people using them.</p>
                 <p>I enjoy exploring new ideas at the intersection of design, technology, and AI.</p>
                 <p>Outside of work, I like photography, I’m learning to play the guitar, and I spend time experimenting with vibe coding and conversational design.</p>
                 <p>I want to create an impact with heart, purpose, and belonging.</p>
-                <p>I’m always open to conversations, collaborations, and new projects. Feel free to reach out :)</p>
+                <p className="font-medium">I’m always open to conversations, collaborations, and new projects. Feel free to reach out :)</p>
               </div>
             </div>
           </div>
@@ -93,13 +100,13 @@ const Portfolio = () => {
       </section>
 
       {/* ================= SELECTED WORKS ================= */}
-      <section className="pb-32">
+      <section className="pb-40 bg-[#F7F8FE]">
         <div className="px-6 md:px-[120px]">
-          <h2 className="font-raleway font-bold text-[20px] text-[#071477] mb-10">
+          <h2 className="font-raleway font-bold text-[28px] text-[#071477] mb-12">
             Selected works
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
             {PROJECTS.map((p, i) => (
               <ProjectCard
                 key={i}
@@ -115,23 +122,27 @@ const Portfolio = () => {
       </section>
 
       {/* ================= VISUAL EXPLORATIONS ================= */}
-      <section className="pb-32">
+      <section className="py-32 md:py-40">
         <div className="px-6 md:px-[120px]">
-          <h2 className="font-raleway font-bold text-[20px] leading-[26px] text-[#071477] mb-10">
+          <h2 className="font-raleway font-bold text-[28px] text-[#071477] mb-12">
             Visual explorations
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6 md:gap-8">
             {DUMMY_VISUALS.map((img, index) => {
               const big = index === 0 || index === 1 || index === 5 || index === 6;
               return (
                 <div
                   key={index}
-                  className={`border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white ${
+                  className={`border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white transition-transform duration-300 hover:scale-[1.02] ${
                     big ? "md:col-span-3 md:row-span-2" : "md:col-span-2"
                   }`}
                 >
-                  <img src={img} alt={`Visual ${index + 1}`} className="w-full h-full object-cover" />
+                  <img
+                    src={img}
+                    alt={`Visual exploration ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               );
             })}
@@ -140,30 +151,32 @@ const Portfolio = () => {
       </section>
 
       {/* ================= PLAYGROUND ================= */}
-      <section className="pb-32">
-        <div className="px-6 md:px-[120px]">
-          <h2 className="font-raleway font-bold text-[20px] leading-[26px] text-[#071477] mb-10">
-            Playground
-          </h2>
+      <section className="pb-32 md:pb-40 bg-[#F7F8FE]">
+  <div className="px-6 md:px-[120px]">
+    <h2 className="font-raleway font-bold text-[28px] text-[#071477] mb-12">
+      Playground
+    </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {PLAYGROUND_VIDEOS.map((video, index) => (
-              <div key={index} className="bg-black rounded-2xl p-3">
-                <div className="rounded-xl overflow-hidden bg-white">
-                  <video
-                    src={video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-[260px] object-cover"
-                  />
-                </div>
-              </div>
-            ))}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      {PLAYGROUND_GIFS.map((gif, index) => (
+        <div
+          key={index}
+          className="bg-white border border-[#E6E9F5] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300"
+        >
+          <div className="relative w-full h-[260px] md:h-[300px] bg-black overflow-hidden">
+            <img
+              src={gif}
+              alt={`Playground motion ${index + 1}`}
+              loading="lazy"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       <Footer />
     </div>
