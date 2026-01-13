@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import ProjectPager from "../components/ProjectPager";
 
 import dosaHero from "../assets/visuals/dosaclub1/dosaclub-hero.png";
 import dosaContext from "../assets/visuals/dosaclub1/dosaclub-context.png";
@@ -316,6 +317,7 @@ const DosaClub = () => {
           </div>
         </div>
       </section>
+<ProjectPager />
 
       <Footer />
     </div>

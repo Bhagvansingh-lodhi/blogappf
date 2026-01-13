@@ -13,13 +13,14 @@ const Dashboard = ({ onLogout }) => {
   const [activeTab, setActiveTab] = useState("posts");
 
   const fetchPosts = async () => {
-    try {
-      const { data } = await API.get("/posts");
-      setPosts(data);
-    } catch (err) {
-      console.error("Failed to fetch posts:", err);
-    }
-  };
+  try {
+    const { data } = await API.get("/posts");
+    setPosts(Array.isArray(data.posts) ? data.posts : []);   // 🔥
+  } catch (err) {
+    console.error("Failed to fetch posts:", err);
+  }
+};
+
 
   useEffect(() => {
     fetchPosts();

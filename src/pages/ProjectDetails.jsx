@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { PROJECTS } from "../data/projects";
 import Footer from "../components/Footer";
 import { Navigate } from "react-router-dom";
+import ProjectPager from "../components/ProjectPager";
 
 
 export default function ProjectDetails() {
@@ -66,6 +67,7 @@ export default function ProjectDetails() {
       {cs.sections.map((sec, i) => (
         <RenderSection key={i} sec={sec} />
       ))}
+<ProjectPager />
 
       <Footer />
     </div>
