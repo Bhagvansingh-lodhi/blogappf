@@ -32,25 +32,29 @@ const PLAYGROUND_GIFS = [pg1, pg2, pg3, pg4, pg5, pg6,pg7,pg8,pg9,pg10];
 const ProjectCard = ({ slug, image, title, description, tags }) => {
   return (
     <Link to={`/project/${slug}`}>
-      <div className="border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white hover:shadow-xl transition duration-300">
-        <div className="w-full h-[280px] md:h-[300px] overflow-hidden bg-[#F8FAFF]">
+      <div className="bg-white rounded-[22px] border border-[#E6E9F5] overflow-hidden hover:shadow-[0_20px_60px_-25px_rgba(0,0,0,0.25)] transition-all duration-500">
+
+        {/* IMAGE */}
+        <div className="bg-[#F5F6FB] rounded-t-[22px] p-6 h-[260px] flex items-center justify-center">
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
+            className="max-h-full object-contain transition-transform duration-500 hover:scale-105"
           />
         </div>
 
-        <div className="px-6 pt-6 pb-8">
-          <h3 className="text-xl md:text-[22px] font-semibold text-[#071477] mb-3 leading-tight">
+        {/* CONTENT */}
+        <div className="px-7 pt-6 pb-8">
+
+          <h3 className="font-raleway font-semibold text-[20px] text-[#071477] mb-2">
             {title}
           </h3>
 
-          <p className="text-[17px] md:text-[18px] leading-[1.6] text-[#3D4367] mb-5">
+          <p className="text-[16.5px] leading-[1.7] text-[#3D4367] mb-5">
             {description}
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 text-sm text-[#7A82A6]">
+          <div className="flex items-center gap-3 text-[14px] text-[#7A82A6]">
             {tags.map((tag, index) => (
               <React.Fragment key={index}>
                 <span>{tag}</span>
@@ -60,108 +64,145 @@ const ProjectCard = ({ slug, image, title, description, tags }) => {
               </React.Fragment>
             ))}
           </div>
+
         </div>
       </div>
     </Link>
   );
 };
 
+
 const Portfolio = () => {
   return (
     <div className="min-h-screen bg-white font-lato">
 
       {/* ================= ABOUT ME ================= */}
-      <section className="pt-32 pb-32 md:pb-40">
-        <div className="px-6 md:px-[120px]">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
-            <div className="w-full md:w-[380px] flex-shrink-0">
-              <img
-                src={profilePng}
-                alt="Isha - UI/UX Designer"
-                className="rounded-2xl w-full object-cover shadow-md"
-              />
-            </div>
+<section className="pt-28 pb-24">
+  <div className="px-6 md:px-[120px]">
+    <div className="flex flex-col md:flex-row gap-14 md:gap-20 items-start">
 
-            <div className="max-w-[720px]">
-             <h1 className="font-raleway font-bold text-3xl md:text-[40px] lg:text-[42px] leading-tight text-[#071477] mb-8">
-  About me
-</h1>
-              <div className="space-y-6 text-[18px] md:text-[19px] leading-[1.75] text-[#3D4367]">
-                <p>Hey, I’m Isha. I design thoughtful digital experiences with a strong focus on people.</p>
-                <p>I work as a UI/UX Designer and Engineer, focusing on making things that genuinely work for people using them.</p>
-                <p>I enjoy exploring new ideas at the intersection of design, technology, and AI.</p>
-                <p>Outside of work, I like photography, I’m learning to play the guitar, and I spend time experimenting with vibe coding and conversational design.</p>
-                <p>I want to create an impact with heart, purpose, and belonging.</p>
-                <p className="font-medium">I’m always open to conversations, collaborations, and new projects. Feel free to reach out :)</p>
-              </div>
-            </div>
-          </div>
+      {/* IMAGE */}
+      <div className="w-full md:w-[360px] flex-shrink-0">
+        <img
+          src={profilePng}
+          alt="Isha – UI/UX Designer"
+          className="rounded-3xl w-full object-cover shadow-sm"
+        />
+      </div>
+
+      {/* TEXT */}
+      <div className="max-w-[760px]">
+
+        {/* Smaller editorial heading */}
+        <h1 className="font-raleway font-semibold text-[26px] md:text-[28px] text-[#071477] mb-8">
+          About me
+        </h1>
+
+        <div className="space-y-7 text-[17.5px] md:text-[18px] leading-[1.9] text-[#3D4367]">
+
+          <p>
+            Hey, I’m Isha. I design thoughtful digital experiences with a strong focus on people.
+          </p>
+
+          <p>
+            I work as a UI/UX Designer and build using no-code tools, focusing on making things that genuinely work for the people using them. It’s easy for that intention to get lost among metrics, opinions, and constraints — so I try to keep the human perspective at the center.
+          </p>
+
+          <p>
+            I enjoy exploring new ideas at the intersection of design, technology, and AI, often by observing how people behave and turning those insights into thoughtful, usable experiences.
+          </p>
+
+          <p>
+            Outside of work, I like photography, I’m learning to play the guitar, and I spend time experimenting with vibe coding and conversational design.
+          </p>
+
+          <p>
+            I want to create an impact with heart, purpose, and a sense of belonging.
+          </p>
+
+          <p className="font-medium">
+            I’m always open to conversations, collaborations, and new projects. Feel free to reach out :)
+          </p>
+
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* ================= SELECTED WORKS ================= */}
-      <section className="pb-40 bg-[#F7F8FE]">
-        <div className="px-6 md:px-[120px]">
-          <h2 className="font-raleway font-bold text-[28px] text-[#071477] mb-12">
-            Selected works
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-            {PROJECTS.map((p, i) => (
-              <ProjectCard
-                key={i}
-                slug={p.slug}
-                image={p.cardImage}
-                title={p.title}
-                description={p.description}
-                tags={[p.role, p.company]}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= VISUAL EXPLORATIONS ================= */}
-      <section className="py-32 md:py-40">
-        <div className="px-6 md:px-[120px]">
-          <h2 className="font-raleway font-bold text-[28px] text-[#071477] mb-12">
-            Visual explorations
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6 md:gap-8">
-            {DUMMY_VISUALS.map((img, index) => {
-              const big = index === 0 || index === 1 || index === 5 || index === 6;
-              return (
-                <div
-                  key={index}
-                  className={`border border-[#E6E9F5] rounded-2xl overflow-hidden bg-white transition-transform duration-300 hover:scale-[1.02] ${
-                    big ? "md:col-span-3 md:row-span-2" : "md:col-span-2"
-                  }`}
-                >
-                  <img
-                    src={img}
-                    alt={`Visual exploration ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= PLAYGROUND ================= */}
-      <section className="pb-32 md:pb-40 bg-[#F7F8FE]">
+<section className="pb-24 bg-white">
   <div className="px-6 md:px-[120px]">
-    <h2 className="font-raleway font-bold text-[28px] text-[#071477] mb-12">
+
+    <h2 className="font-raleway font-semibold text-[26px] text-[#071477] mb-14">
+      Selected works
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {PROJECTS.map((p, i) => (
+        <ProjectCard
+          key={i}
+          slug={p.slug}
+          image={p.cardImage}
+          title={p.title}
+          description={p.description}
+          tags={[p.role, p.company]}
+        />
+      ))}
+    </div>
+
+  </div>
+</section>
+
+
+<section className="pt-32 pb-24 bg-white">
+  <div className="px-6 md:px-[120px]">
+
+    <h2 className="font-raleway font-semibold text-[26px] text-[#071477] mb-14">
+      Visual explorations
+    </h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-7">
+
+      {DUMMY_VISUALS.map((img, index) => {
+        const big = index === 0 || index === 1 || index === 5 || index === 6;
+
+        return (
+          <div
+            key={index}
+            className={`rounded-[22px] border border-[#E6E9F5] overflow-hidden bg-white 
+            hover:shadow-[0_18px_55px_-28px_rgba(0,0,0,0.25)] transition-all duration-500
+            ${big ? "md:col-span-3 md:row-span-2" : "md:col-span-2"}`}
+          >
+            <img
+              src={img}
+              alt={`Visual exploration ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+
+<section className="pt-24 pb-40 bg-white">
+  <div className="px-6 md:px-[120px]">
+
+    <h2 className="font-raleway font-semibold text-[26px] text-[#071477] mb-14">
       Playground
     </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
       {PLAYGROUND_GIFS.map((gif, index) => (
         <div
           key={index}
-          className="bg-white border border-[#E6E9F5] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300"
+          className="rounded-[22px] border border-[#E6E9F5] bg-white overflow-hidden
+          hover:shadow-[0_18px_55px_-28px_rgba(0,0,0,0.25)] transition-all duration-500"
         >
           <div className="relative w-full h-[260px] md:h-[300px] bg-black overflow-hidden">
             <img
@@ -173,9 +214,11 @@ const Portfolio = () => {
           </div>
         </div>
       ))}
+
     </div>
   </div>
 </section>
+
 
 
       <Footer />
