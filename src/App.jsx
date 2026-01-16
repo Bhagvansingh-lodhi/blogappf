@@ -22,6 +22,8 @@ import ProjectRouter from "./pages/ProjectRouter";
 import Airing from "./pages/Airing";
 import Gadgetgrab from "./pages/Gadgetgrab";
 import ScrollToTop from "./components/ScrollToTop";
+import Impactis from "./pages/Impactis";
+
 
 
 
@@ -64,7 +66,7 @@ function App() {
   <Route path="/project/gadgetgrab" element={<Gadgetgrab />} />
 
   {/* NORMAL PROJECTS */}
-  <Route path="/project/:slug" element={<ProjectDetails />} />
+  <Route path="/project/impactis-global" element={< Impactis/>} />
 
   {/* Auth */}
   <Route
