@@ -105,7 +105,7 @@ const Portfolio = () => {
           </p>
 
           <p>
-            I work as a UI/UX Designer and build using no-code tools, focusing on making things that genuinely work for the people using them. It’s easy for that intention to get lost among metrics, opinions, and constraints — so I try to keep the human perspective at the center.
+            I work as a UI/UX Designer and build using no-code tools, focusing on making things that genuinely work for the people using them. It’s easy for that intention to get lost among metrics, opinions, and constraints so I try to keep the human perspective at the center.
           </p>
 
           <p>
