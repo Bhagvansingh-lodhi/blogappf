@@ -38,14 +38,17 @@ const Impactis = () => {
             Making Impactis Global's work visible, understandable, and easy to share
           </p>
 
-          {/* Hero */}
-          <div className="mt-12 bg-[#F2F4F7] rounded-[28px] p-8 flex justify-center">
-            <img
-              src={impHero1}
-              alt="Impactis Global Newsletter"
-              className="w-full max-w-[900px] rounded-[24px]"
-            />
-          </div>
+         {/* Hero */}
+{/* Hero */}
+<div className="mt-12">
+  <img
+    src={impHero1}
+    alt="Impactis Global Newsletter"
+    className="w-full rounded-[24px]"
+  />
+</div>
+
+
 
           {/* Meta */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-y-8 text-[#344054]">
