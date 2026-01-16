@@ -38,14 +38,15 @@ const Gadgetgrab = () => {
             discovery, comparison, and purchasing into one clear and minimal experience.
           </p>
 
-          {/* Hero Image */}
-          <div className="mt-12 bg-[#F2F4F7] rounded-[28px] p-8 flex justify-center"> {/* Changed from mt-16, p-10 to p-8 */}
-            <img
-              src={gadgetHero}
-              alt="Gadgetgrab App UI"
-              className="w-full max-w-[900px] rounded-[24px]"
-            />
-          </div>
+         {/* Hero Image — no container */}
+<div className="mt-12">
+  <img
+    src={gadgetHero}
+    alt="Gadgetgrab App UI"
+    className="w-full rounded-[24px]"
+  />
+</div>
+
 
           {/* Meta */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-y-8 text-[#344054]"> {/* Changed from mt-16, gap-y-10 to gap-y-8 */}
