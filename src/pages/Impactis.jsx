@@ -52,10 +52,19 @@ const Impactis = () => {
 
           {/* Meta */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-y-8 text-[#344054]">
-            <div>
-              <p className="text-xs uppercase tracking-widest text-[#3D4367]">Project</p>
-              <p className="mt-1 font-medium text-[#3D4367]">Impactis Global</p>
-            </div>
+           <div>
+  <p className="text-xs uppercase tracking-widest text-[#98A2B3]">Project</p>
+
+  <a
+    href="https://impactisglobal.com/home"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-1 inline-block font-medium text-[#3D4367] hover:underline"
+  >
+    Impactis Global
+  </a>
+</div>
+
 
             <div>
               <p className="text-xs uppercase tracking-widest text-[#98A2B3]">Role</p>
@@ -67,10 +76,19 @@ const Impactis = () => {
               <p className="mt-1 font-medium">14 Days</p>
             </div>
 
-            <div>
-              <p className="text-xs uppercase tracking-widest text-[#3D4367]">Link</p>
-              <p className="mt-1 font-medium text-[#3D4367]">March Newsletter</p>
-            </div>
+           <div>
+  <p className="text-xs uppercase tracking-widest text-[#98A2B3]">Link</p>
+
+  <a
+    href="https://impactisglobal.info/monthly-newsletter-march/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-1 inline-block font-medium text-[#3D4367] hover:underline"
+  >
+    March Newsletter
+  </a>
+</div>
+
 
             <div>
               <p className="text-xs uppercase tracking-widest text-[#98A2B3]">Team</p>

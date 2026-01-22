@@ -35,13 +35,14 @@ const ProjectCard = ({ slug, image, title, description, tags }) => {
       <div className="bg-white rounded-[22px] border border-[#E6E9F5] overflow-hidden hover:shadow-[0_20px_60px_-25px_rgba(0,0,0,0.25)] transition-all duration-500">
 
         {/* IMAGE */}
-        <div className="bg-[#F5F6FB] rounded-t-[22px] p-6 h-[260px] flex items-center justify-center">
-          <img
-            src={image}
-            alt={title}
-            className="max-h-full object-contain transition-transform duration-500 hover:scale-105"
-          />
-        </div>
+       <div className="rounded-t-[22px] overflow-hidden h-[260px]">
+  <img
+    src={image}
+    alt={title}
+    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+  />
+</div>
+
 
         {/* CONTENT */}
         <div className="px-7 pt-6 pb-8">
@@ -76,30 +77,28 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-white font-lato">
 
-      {/* ================= ABOUT ME ================= */}
-<section className="pt-28 pb-24">
-  <div className="px-6 md:px-[120px]">
-    <div className="flex flex-col md:flex-row gap-14 md:gap-20 items-start">
+ <section className="pt-28 pb-24">
+<div className="max-w-[1120px] mx-auto px-6">
+
+    <div className="grid md:grid-cols-[380px_1fr] gap-20 items-start">
 
       {/* IMAGE */}
-      <div className="w-full md:w-[360px] flex-shrink-0">
-        <img
-          src={profilePng}
-          alt="Isha – UI/UX Designer"
-          className="rounded-3xl w-full object-cover shadow-sm"
-        />
-      </div>
+      <div className="w-full md:w-[360px] h-[680px] flex-shrink-0 self-start">
+  <img
+    src={profilePng}
+    alt="Isha – UI/UX Designer"
+    className="rounded-3xl w-full h-full object-cover shadow-sm"
+  />
+</div>
+
 
       {/* TEXT */}
-      <div className="max-w-[760px]">
-
-        {/* Smaller editorial heading */}
-        <h1 className="font-raleway font-semibold text-[26px] md:text-[28px] text-[#071477] mb-8">
+      <div>
+        <h1 className="font-raleway font-semibold text-[28px] text-[#071477] mb-6">
           About me
         </h1>
 
-        <div className="space-y-7 text-[17.5px] md:text-[18px] leading-[1.9] text-[#3D4367]">
-
+        <div className="space-y-7 text-[18px] leading-[1.9] text-[#3D4367]">
           <p>
             Hey, I’m Isha. I design thoughtful digital experiences with a strong focus on people.
           </p>
@@ -123,17 +122,17 @@ const Portfolio = () => {
           <p className="font-medium">
             I’m always open to conversations, collaborations, and new projects. Feel free to reach out :)
           </p>
-
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 
-      {/* ================= SELECTED WORKS ================= */}
+{/* ================= SELECTED WORKS ================= */}
 <section className="pb-24 bg-white">
-  <div className="px-6 md:px-[120px]">
+  <div className="max-w-[1120px] mx-auto px-6">
 
     <h2 className="font-raleway font-semibold text-[26px] text-[#071477] mb-14">
       Selected works
@@ -156,8 +155,9 @@ const Portfolio = () => {
 </section>
 
 
+
 <section className="pt-32 pb-24 bg-white">
-  <div className="px-6 md:px-[120px]">
+<div className="max-w-[1120px] mx-auto px-6">
 
     <h2 className="font-raleway font-semibold text-[26px] text-[#071477] mb-14">
       Visual explorations
@@ -190,7 +190,7 @@ const Portfolio = () => {
 
 
 <section className="pt-24 pb-40 bg-white">
-  <div className="px-6 md:px-[120px]">
+<div className="max-w-[1120px] mx-auto px-6">
 
     <h2 className="font-raleway font-semibold text-[26px] text-[#071477] mb-14">
       Playground

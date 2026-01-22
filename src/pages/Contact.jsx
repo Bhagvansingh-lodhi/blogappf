@@ -23,7 +23,7 @@ const Contact = () => {
 
       {/* ================= CONTACT CONTENT ================= */}
       <section className="pt-28 pb-32">
-        <div className="px-6 md:px-[120px] max-w-[880px]">
+<div className="max-w-[1120px] mx-auto px-6">
 
           {/* HEADING */}
           <h1 className="font-raleway font-bold text-[24px] leading-[30px] text-[#071477] mb-4">

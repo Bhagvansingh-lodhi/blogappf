@@ -10,7 +10,7 @@ const Resources = () => {
 
       {/* HEADER */}
       <section className="pt-28 pb-16 border-b border-gray-100">
-        <div className="px-6 md:px-[120px]">
+<div className="max-w-[1120px] mx-auto px-6">
           <h1 className="font-raleway font-semibold text-[28px] leading-[34px] text-[#071477] mb-2">
             Design Resources
           </h1>
@@ -21,7 +21,7 @@ const Resources = () => {
       </section>
 
       <section className="py-20">
-        <div className="px-6 md:px-[120px] space-y-24">
+<div className="max-w-[1120px] mx-auto px-6 space-y-24">
 
           {/* COURSES */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-20">

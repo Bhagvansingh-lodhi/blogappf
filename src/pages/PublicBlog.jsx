@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../api";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import heroImg from "../assets/hero.png";
+import heroImg from "../assets/visuals/impactis1/blogtext.png";
 import PublicBlogSkeleton from "../components/PublicBlogSkeleton";
 
 const PublicBlog = () => {
@@ -43,21 +43,28 @@ const PublicBlog = () => {
   return (
     <div className="min-h-screen bg-white font-lato">
       {/* HERO */}
-      <section className="pt-20 pb-8 border-b border-gray-100">
-        <div className="w-full">
-          <div className="px-6 md:px-[120px] flex justify-center md:justify-start">
-            <img
-              src={heroImg}
-              loading="lazy"
-              decoding="async"
-              width="420"
-              height="240"
-              alt="Hero"
-              className="w-full max-w-[420px] md:max-w-none h-auto object-contain"
-            />
-          </div>
-        </div>
-      </section>
+      {/* HERO */}
+<section className="pt-20 pb-12 border-b border-gray-100">
+  <div className="max-w-[1120px] mx-auto px-6">
+
+    {/* Hero Image */}
+    <img
+      src={heroImg}
+      loading="lazy"
+      decoding="async"
+      alt="Hero"
+      className="w-full h-auto object-contain"
+    />
+
+{/* Hero Subtext */}
+<p className="mt-6 max-w-[720px] font-lato font-semi bold text-[20px] leading-[34px] text-[#7B82A0]">
+  Thoughts on design, product thinking, and the craft of building things
+  people use. I write to understand what I think.
+</p>
+
+  </div>
+</section>
+
 
       {loading && <PublicBlogSkeleton />}
 
@@ -70,7 +77,7 @@ const PublicBlog = () => {
       {/* FEATURED POST */}
       {!loading && !error && featuredPost && (
         <section className="bg-white border-b border-gray-100">
-          <div className="max-w-[1040px] mx-auto px-6 lg:px-0 py-16">
+<div className="max-w-[1120px] mx-auto px-6 py-16">
             <Link
               to={`/post/${featuredPost._id}`}
               className="group block border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300"
@@ -122,7 +129,7 @@ const PublicBlog = () => {
       {/* REST POSTS */}
       {!loading && !error && remainingPosts.length > 0 && (
         <section className="bg-white">
-          <div className="max-w-[1040px] mx-auto px-6 lg:px-0 py-16">
+<div className="max-w-[1120px] mx-auto px-6 py-16">
             <div className="grid md:grid-cols-2 gap-8">
               {remainingPosts.map((post) => {
                 const cardImg =

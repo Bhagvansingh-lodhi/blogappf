@@ -44,8 +44,9 @@ const SinglePost = () => {
 
   return (
     <div className="min-h-screen bg-white font-lato">
-      <section className="pt-28 pb-32">
-        <div className="px-6 md:px-[120px] max-w-[760px]">
+     <section className="pt-28 pb-32">
+  <div className="max-w-[1120px] mx-auto px-6">
+    <div className="max-w-[760px]">
 
           <Link to="/" className="text-[14px] text-[#8A90B2] hover:text-[#1028CD] inline-flex items-center gap-1 mb-8">
             ← Back to articles
@@ -98,7 +99,10 @@ const SinglePost = () => {
 </article>
 
         </div>
+                </div>
+
       </section>
+      
     </div>
   );
 };

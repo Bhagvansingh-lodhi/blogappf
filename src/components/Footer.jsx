@@ -37,7 +37,7 @@ const Footer = () => {
       ref={footerRef}
       className="bg-white font-lato opacity-0 translate-y-8 transition-all duration-800 ease-out"
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-20 py-12 lg:py-16">
+<div className="max-w-[1120px] mx-auto px-6 py-12 lg:py-16">
         
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-0">
           

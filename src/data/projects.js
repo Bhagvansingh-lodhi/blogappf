@@ -1,7 +1,7 @@
-import p1 from "../assets/visuals/impactis.png";
-import p2 from "../assets/visuals/airing.png";
-import p3 from "../assets/visuals/dosaclub.png";
-import p4 from "../assets/visuals/gadgetgrab.png";
+import p1 from "../assets/visuals/impactis1/Impactis project img.png";
+import p2 from "../assets/visuals/impactis1/Hamrovivah project img.png";
+import p3 from "../assets/visuals/impactis1/dosaclub project img.png";
+import p4 from "../assets/visuals/impactis1/Gadgetgrab project img.png";
 
 
 export const PROJECTS = [

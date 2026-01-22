@@ -43,13 +43,16 @@ const Navbar = () => {
         isScrolled ? "shadow-sm" : ""
       } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
-      <div className="w-full h-16 flex items-center font-lato max-w-[1440px] mx-auto">
+      {/* ✅ SAME WIDTH + PADDING AS YOUR PROJECT PAGES */}
+      <div className="h-16 flex items-center font-lato max-w-[1120px] mx-auto px-6">
 
-        <div className="ml-6 md:ml-[120px] flex items-center h-full">
+        {/* ✅ LOGO GOES TO HOME */}
+        <Link to="/" className="flex items-center h-full">
           <img src={logo} alt="Logo" className="h-8 w-auto object-contain" />
-        </div>
+        </Link>
 
-        <div className="hidden md:flex ml-auto mr-[120px] items-center h-full">
+        {/* Desktop Links */}
+        <div className="hidden md:flex ml-auto items-center h-full">
           <div className="flex items-center gap-8 text-[18px] leading-[27.4px] text-[#071477]">
             {navLinks.map((item) => {
               const active = location.pathname === item.path;
@@ -64,7 +67,11 @@ const Navbar = () => {
                     after:absolute after:left-0 after:-bottom-1
                     after:h-[2px] after:bg-[#1028CD]
                     after:transition-all after:duration-300
-                    ${active ? "after:w-full text-[#1028CD]" : "after:w-0 hover:after:w-full"}
+                    ${
+                      active
+                        ? "after:w-full text-[#1028CD]"
+                        : "after:w-0 hover:after:w-full"
+                    }
                   `}
                 >
                   {item.name}
@@ -74,14 +81,16 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="ml-auto mr-6 md:hidden text-[#071477]"
+          className="ml-auto md:hidden text-[#071477]"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <div
         className={`md:hidden bg-white border-t border-gray-200 transition-all duration-300 ${
           open ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
