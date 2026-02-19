@@ -44,7 +44,7 @@ const PublicBlog = () => {
     <div className="min-h-screen bg-white font-lato">
       {/* HERO */}
       {/* HERO */}
-<section className="pt-20 pb-12 border-b border-gray-100">
+<section className="pt-28 pb-12 border-b border-gray-100">
   <div className="max-w-[1120px] mx-auto px-6">
 
     {/* Hero Image */}
